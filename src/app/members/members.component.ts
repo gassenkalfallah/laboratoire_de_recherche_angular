@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GLOBAL } from '../app-config';
 import { Member } from '../Models/Member';
+import {MemberService} from "../Services/member.service";
 @Component({
   selector: 'app-members',
   templateUrl: './members.component.html',
@@ -8,7 +9,9 @@ import { Member } from '../Models/Member';
 })
 export class MembersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private memberService:MemberService) {
+    this.dataSource=this.memberService.tab;
+  }
 
   ngOnInit(): void {
   }
