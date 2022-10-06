@@ -4,8 +4,6 @@ import {GLOBAL} from '../app_config';
 import {MemberService} from "../../Services/member.service";
 import {Router} from "@angular/router";
 import {MatTableDataSource} from "@angular/material/table";
-import {ConfirmDialogComponent} from "../confirm-dialog/confirm-dialog.component";
-import {MatDialog} from "@angular/material/dialog";
 
 
 @Component({
@@ -17,7 +15,7 @@ export class MembersComponent implements OnInit {
   dataSource: MatTableDataSource<Member>;
   displayedColumns: string[] = ['id', 'cin', 'name', 'type', 'cv', 'creationDate', 'icone'];
 
-  constructor(private memberService: MemberService, private router: Router,private dialog:MatDialog) {
+  constructor(private memberService: MemberService, private router: Router) {
     //this.dataSource = this.memberService.tab;
     this.dataSource = new MatTableDataSource(this.memberService.tab);
   }
@@ -31,24 +29,12 @@ export class MembersComponent implements OnInit {
     });
   }
 
-
   deleteMember(id: string): void {
     /*this.memberService.deleteMember(id).then((newtab) => {
       this.dataSource=newtab});*/
-      let dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      height: '400px',
-      width: '600px',
+    this.memberService.deleteMember(id).then(() => {
+      this.fetchDataSource()
     });
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.memberService.deleteMember(id).then(() => {
-          this.fetchDataSource()
-        });
-
-      }
-    });
-
-
   }
 
   applyFilter(event: Event) {
