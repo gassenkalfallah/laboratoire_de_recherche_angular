@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
@@ -7,11 +7,13 @@ import {MatDialogRef} from "@angular/material/dialog";
   styleUrls: ['./confirm-dialog.component.css']
 })
 export class ConfirmDialogComponent implements OnInit {
-  public title ='are you sure?';
-  public message ='do you really want to delete?';
-  public cancel ='cancel';
-  public confirm ='confirm';
-  constructor(public dialogRef :MatDialogRef<ConfirmDialogComponent> ) { }
+  public title = 'Are you sure ?';
+  cancel = 'Cancel';
+  message = 'Do you really want to remove this item ?';
+  confirm = 'Confirm';
+
+  constructor( public dialogRef: MatDialogRef<ConfirmDialogComponent>) {
+  }
 
   ngOnInit(): void {
   }

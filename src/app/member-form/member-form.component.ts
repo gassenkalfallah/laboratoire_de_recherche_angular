@@ -26,12 +26,13 @@ export class MemberFormComponent implements OnInit {
     console.log(this.currentID);
     //2. tester sur la valeur de id
     if (!!this.currentID) {
-      //3.si id a une valeur  => getMemberBuId(id)=>member
+      //3.si id a une valeur  => getMemberById(id)=>member
       this.memberService.getMemberById(this.currentID).then((memberToFind) => {
         this.item = memberToFind;
+        //4.extraction
         this.initForm1(this.item)
       });
-      //4.extraction
+
     }
     //5. sinon this.initForm();
     else {

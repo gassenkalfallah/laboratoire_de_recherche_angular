@@ -13,7 +13,6 @@ export class MemberService {
   constructor(private httpClient: HttpClient) {
   }
 
-
   saveMember(objectToSubmit: any): Promise<Member> {
     // si j'ai la partie back
     //return this.httpClient.post('linktorestAPI',objectToSubmit).toPromise();
